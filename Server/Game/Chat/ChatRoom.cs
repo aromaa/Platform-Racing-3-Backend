@@ -148,7 +148,7 @@ namespace Platform_Racing_3_Server.Game.Chat
 
                 if (!PlatformRacing3Server.CommandManager.Execte(session, args[0], args.AsSpan(start: 1, length: args.Length - 1)))
                 {
-                    session.SendPacket(new AlertOutgoingMessage("Unknown command"));
+                    session.SendPacket(new AlertOutgoingMessage("Unknown command; please type /help for a list of the available commands."));
                 }
             }
             else if (message.Length > 0)

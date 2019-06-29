@@ -1,4 +1,4 @@
-﻿using Platform_Racing_3_Server.Core;
+using Platform_Racing_3_Server.Core;
 using Platform_Racing_3_Server.Game.Client;
 using Platform_Racing_3_Server.Game.Communication.Messages.Outgoing;
 using Platform_Racing_3_Server_API.Game.Commands;
@@ -14,7 +14,7 @@ namespace Platform_Racing_3_Server.Game.Commands.Misc
 
         public void OnCommand(ICommandExecutor executor, string label, ReadOnlySpan<string> args)
         {
-            if (args.Length >= 2)
+            if (args.Length <= 0)
             {
                 ClientSession target = PlatformRacing3Server.ClientManager.GetClientSessionByUsername(args[0]);
                 if (target != null)
@@ -28,7 +28,7 @@ namespace Platform_Racing_3_Server.Game.Commands.Misc
             }
             else
             {
-                executor.SendMessage("Usage: /kick [user] [message]");
+                executor.SendMessage("Usage: /alert [user]");
             }
         }
     }
