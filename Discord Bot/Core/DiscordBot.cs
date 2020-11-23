@@ -54,8 +54,17 @@ namespace Discord_Bot.Core
 
         internal async Task SetupDiscordBot()
         {
-            await this.Client.LoginAsync(TokenType.Bot, this.Config.BotToken);
+            try
+            {
+                await this.Client.LoginAsync(TokenType.Bot, this.Config.BotToken);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Could not login: {e}");
+            }
+
             await this.Client.StartAsync();
+            await this.Client.SetGameAsync("pr3hub.com | /help");
         }
 
         private async Task HandleIncomingMessage(SocketMessage message)

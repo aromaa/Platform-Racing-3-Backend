@@ -12,7 +12,7 @@ namespace Discord_Bot.Commands
     public class VerifyCommand : ModuleBase<SocketCommandContext>
     {
         [Command("pr3verify")]
-        [Summary("I swear I'm Jiggmin")]
+        [Summary("Links your Discord account with your Platform Racing 3 account.")]
         public Task VerifyAccount()
         {
             return Do();

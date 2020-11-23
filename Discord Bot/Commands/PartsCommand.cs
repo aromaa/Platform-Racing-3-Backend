@@ -13,7 +13,7 @@ namespace Discord_Bot.Commands
     public class MyPartsCommand : ModuleBase<SocketCommandContext>
     {
         [Command("pr3parts")]
-        [Summary("PARTS! PARTS! WHICH ONE AM I MISSING!?")]
+        [Summary("Returns a list of obtainable PR3 parts and hats.")]
         public Task GetOnlinePlayersCount()
         {
             return DoAsync();
@@ -135,6 +135,11 @@ namespace Discord_Bot.Commands
                 }
 
                 EmbedBuilder embed = new EmbedBuilder();
+
+                embed.WithTitle("Parts List");
+                embed.WithColor(Color.Blue);
+                embed.WithAuthor(author = > { author.WithName(this.Context.User.Username + this.Context.User.Discriminator).WithIconUrl(this.Context.User.GetAvatarUrl()) });
+
                 embed.AddField(new EmbedFieldBuilder()
                 {
                     Name = $"Hats ({hats.Count}/{hats.Max})",
@@ -189,7 +194,7 @@ namespace Discord_Bot.Commands
                     IsInline = true
                 });
 
-                await this.ReplyAsync(message: this.Context.User.Mention, embed: embed.Build());
+                await this.Context.User.SendMessageAsync("", false, embed.Build());
             }
         }
     }
